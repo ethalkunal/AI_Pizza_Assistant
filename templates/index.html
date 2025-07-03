@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Kunal's Pizza AI Assistant 🍕</title>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+<body>
+  <header>
+    🍕 Kunal's Pizza AI Assistant
+  </header>
+
+  <div class="chat-container">
+    <div class="messages" id="messages">
+      <div class="message ai">Hello! I'm your pizza assistant 🍕. How can I help you today?</div>
+    </div>
+
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off" required />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("user-input");
+    const messages = document.getElementById("messages");
+    let conversation = [];
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const userMessage = input.value.trim();
+        if (!userMessage) return;
+
+        messages.innerHTML += `<div class="message user">${userMessage}</div>`;
+        input.value = "";
+        messages.scrollTop = messages.scrollHeight;
+
+        const response = await fetch("/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage, conversation })
+      });
+
+        const data = await response.json();
+        conversation = data.conversation;
+
+        const aiDiv = document.createElement("div");
+        aiDiv.className = "message ai";
+        aiDiv.innerHTML = data.reply;
+        messages.appendChild(aiDiv);
+        messages.scrollTop = messages.scrollHeight;
+
+    });
+  </script>
+</body>
+</html>
