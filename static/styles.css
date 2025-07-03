@@ -1,0 +1,81 @@
+.message.ai p, .message.ai ul, .message.ai li, .message.ai h3, .message.ai strong {
+    margin: 0.5rem 0;
+    line-height: 1.5;
+}
+  
+.message.ai ul {
+    padding-left: 1.2rem;
+    list-style-type: disc;
+}
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f8fafc;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #ef4444;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  
+  .chat-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  
+  .messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+  }
+  
+  .message {
+    margin: 0.5rem 0;
+    padding: 0.75rem;
+    border-radius: 8px;
+  }
+  
+  .user {
+    background-color: #dbeafe;
+    text-align: right;
+  }
+  
+  .ai {
+    background-color: #fef3c7;
+  }
+  
+  form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  input[type="text"] {
+    flex-grow: 1;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  button {
+    padding: 0.75rem 1rem;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #2563eb;
+  }
